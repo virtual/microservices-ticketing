@@ -8,6 +8,23 @@ Ticketing app following along with [Microservices with Node and React](https://w
 
 ## Routes\*
 
+- We will use `express-validator` to validate input (req.body) as route middleware
+
+  - validation: making sure the input is what we intend
+  - sanitization: changing the input to what we need
+  - Use `validationResult` to pull out the error messages produced during validation step
+
+```ts
+router.post(
+  '/api/users/signup',
+  [
+    body('email').isEmail().withMessage('Email must be valid'),
+    body('password').isString()
+  ],
+  (req, res) => {
+    ...
+```
+
 ### Auth Routes
 
 | Route                 | Method | Body                                | Purpose                        |
