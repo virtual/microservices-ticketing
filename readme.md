@@ -62,6 +62,13 @@ Common error response for this project:
 }
 ```
 
+**Abstract Class**
+
+- To ensure the error object/serializeError() method is consistent, we will use an abstract class (instead of Interface)
+- Cannot be initiated
+- Used to setup requirements for subclasses
+- _Does_ create a class when translated to JS, which means we can check it as instanceOf (interfaces don't exist in JS)
+
 ### SSL Error on dev
 
 - Ingress is setup to use https by default
