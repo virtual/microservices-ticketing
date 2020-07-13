@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 // We will use the body from express-validator to validate
 // the req.body, as middleware
+import { RequestValidationError } from '../errors/request-validation-error';
+import { DatabaseConnectionError } from '../errors/database-connection-error';
 
 const router = express.Router();
 
@@ -24,13 +26,17 @@ router.post(
       // return res.status(400).send(errors.array());
       // to be consistent, instead throw an error
       // which uses our custom error middleware
-      throw new Error('Invalid email or password');
+      // throw new Error('Invalid email or password');
+
+      // now use the new extended error subclasses
+      throw new RequestValidationError(errors.array());
     }
 
     const { email, password } = req.body;
 
+    // throw new Error('Error connecting to database');
+    throw new DatabaseConnectionError();
     console.log('Create a user... v!! 1');
-    throw new Error('Error connecting to database');
 
     res.send({ email, password });
   }

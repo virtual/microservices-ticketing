@@ -51,6 +51,17 @@ app.use(function (err, req, res, next) {
 });
 ```
 
+Common error response for this project:
+
+```ts
+{
+  errors: {
+    message: string,
+    field?: string
+  }[]
+}
+```
+
 ### SSL Error on dev
 
 - Ingress is setup to use https by default
