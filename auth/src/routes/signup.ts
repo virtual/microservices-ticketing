@@ -21,12 +21,17 @@ router.post(
 
     if (!errors.isEmpty()) {
       // turns errors object to array and returns it
-      return res.status(400).send(errors.array());
+      // return res.status(400).send(errors.array());
+      // to be consistent, instead throw an error
+      // which uses our custom error middleware
+      throw new Error('Invalid email or password');
     }
 
     const { email, password } = req.body;
 
     console.log('Create a user... v!! 1');
+    throw new Error('Error connecting to database');
+
     res.send({ email, password });
   }
 );
