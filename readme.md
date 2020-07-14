@@ -43,6 +43,7 @@ router.post(
 - As we include more microservices (possibly built using different frameworks/langauges), the error objects may also be formatted differently
 - We need to define the format of the error object returned to be consistent for the React front-end
 - [Express error handling](https://expressjs.com/en/guide/error-handling.html) lets you create a custom middleware function for error handling; it _must_ include 4 arguments in order to know that it is an error handling middleware
+- Using `express-async-errors` for throwing async errors
 
 ```ts
 app.use(function (err, req, res, next) {
